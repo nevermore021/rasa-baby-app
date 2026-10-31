@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>پنل مدیریت — دنیای رسا ۲.۰</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/css/app.css?v=2.0.0">
+<style>
+  .admin-wrap{max-width:1000px;margin:0 auto;padding:20px 16px 80px}
+  .admin-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);padding:18px;box-shadow:var(--shadow-sm);margin-bottom:14px}
+  .admin-tabs{display:flex;gap:6px;flex-wrap:wrap;margin:14px 0}
+  .admin-tabs button{border:1px solid var(--line);background:var(--surface);border-radius:99px;padding:8px 14px;font-weight:700;font-size:13px;cursor:pointer;color:var(--muted)}
+  .admin-tabs button.active{background:var(--text);color:var(--bg);border-color:var(--text)}
+  .admin-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+  .stat{background:var(--surface-2);border:1px solid var(--line);border-radius:16px;padding:14px}
+  .stat b{display:block;font-size:24px}
+  .stat span{color:var(--muted);font-size:12px}
+  .row{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:8px 0}
+  .row label{font-size:12.5px;color:var(--muted);min-width:90px}
+  .row input[type=text],.row input[type=password],.row input[type=number],.row textarea{
+    flex:1;min-width:160px;padding:9px 11px;border-radius:12px;border:1px solid var(--line);background:var(--surface-2);color:var(--text);font:inherit;font-size:13px
+  }
+  textarea{min-height:64px;resize:vertical}
+  .list{max-height:520px;overflow:auto;border:1px solid var(--line);border-radius:16px}
+  .item{display:flex;align-items:center;gap:10px;padding:9px 12px;border-bottom:1px solid var(--line)}
+  .item:last-child{border-bottom:0}
+  .item img{width:38px;height:38px;border-radius:10px;object-fit:cover}
+  .item .nm{flex:1;font-weight:700;font-size:13px}
+  .item .sub{color:var(--muted);font-size:11px}
+  .badge{font-size:11px;padding:2px 8px;border-radius:99px;background:var(--surface-2);border:1px solid var(--line);color:var(--muted)}
+  .badge.on{background:var(--primary-soft);border-color:var(--primary);color:var(--primary-2)}
+  .hint{font-size:11.5px;color:var(--muted);line-height:1.9}
+  .gate{max-width:380px;margin:14vh auto;text-align:center}
+  .gate input{margin:10px auto;display:block}
+  .toast2{position:fixed;bottom:20px;right:50%;transform:translateX(50%);background:var(--text);color:var(--bg);padding:10px 16px;border-radius:12px;font-weight:700;font-size:13px;opacity:0;transition:.25s;z-index:99}
+  .toast2.show{opacity:1}
+</style>
+</head>
+<body>
+<div class="admin-wrap" id="gateWrap" hidden>
+  <div class="gate admin-card">
+    <div style="font-size:44px">🔐</div>
+    <h1 style="font-size:19px;margin:6px 0">پنل مدیریت دنیای رسا</h1>
+    <p class="hint">رمز پیش‌فرض: <b>rasa2026</b> — بعد از ورود از تب «امنیت» عوضش کن.</p>
+    <input id="gatePass" type="password" placeholder="رمز ورود" autocomplete="current-password"
+           style="width:100%;padding:11px;border-radius:12px;border:1px solid var(--line);background:var(--surface-2);color:var(--text);font:inherit">
+    <button class="btn btn-primary" id="gateBtn" style="margin-top:10px;width:100%">ورود</button>
+  </div>
+</div>
+
+<div class="admin-wrap" id="adminWrap" hidden>
+  <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap">
+    <h1 style="font-size:20px;margin:0">🛠️ پنل مدیریت — دنیای رسا</h1>
+    <div style="display:flex;gap:8px">
+      <a class="btn btn-ghost btn-sm" href="index.html">↗ مشاهده سایت</a>
+      <button class="btn btn-ghost btn-sm" id="logoutBtn">خروج</button>
+    </div>
+  </div>
+
+  <div class="admin-tabs" id="tabs">
+    <button data-tab="overview" class="active">📊 نمای کلی</button>
+    <button data-tab="animals">🐾 حیوانات</button>
+    <button data-tab="locks">🔒 قفل‌ها</button>
+    <button data-tab="content">🎵 محتوا</button>
+    <button data-tab="data">💾 داده</button>
+    <button data-tab="security">🔐 امنیت</button>
+  </div>
+
+  <div id="tabBody"></div>
+</div>
+<div class="toast2" id="toast2"></div>
+
+<script src="assets/js/data.js?v=2.0.0"></script>
+<script src="assets/js/admin.js?v=2.0.0"></script>
+</body>
+</html>

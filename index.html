@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>دنیای رسا ۲.۰ — بازی، صدا و یادگیری</title>
+<meta name="description" content="دنیای حیوانات رسا ۲.۰: صداهای درست، ردپاهای جادویی، بازی‌های آموزشی، آهنگ، ویدیو و قفل‌های جایزه‌ای.">
+<meta name="theme-color" content="#0fbf9f">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="assets/fonts/Vazirmatn-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/app.css?v=2.0.0">
+</head>
+<body>
+
+<div id="splash" aria-hidden="true">
+  <div class="splash-logo">🐾</div>
+  <div class="splash-name">دنیای رسا</div>
+  <div class="splash-bar"><i></i></div>
+</div>
+
+<header class="topbar" id="topbar">
+  <a class="brand" href="#/home" aria-label="خانه">
+    <span class="brand-paw">🐾</span>
+    <span class="brand-txt">دنیای <b>رسا</b></span>
+  </a>
+  <div class="topbar-actions">
+    <button class="points-chip" id="pointsChip" type="button" title="امتیازهای من" aria-label="امتیازها">
+      <span class="coin">💎</span><b id="pointsVal">۰</b>
+    </button>
+    <button class="icon-btn" id="btnMusic" type="button" title="موسیقی" aria-label="موسیقی">🎵</button>
+    <button class="icon-btn" id="btnSettings" type="button" title="تنظیمات" aria-label="تنظیمات">⚙️</button>
+  </div>
+</header>
+
+<nav class="tabs" id="tabs" aria-label="بخش‌ها">
+  <a href="#/home" data-tab="home"><span>🏠</span>خانه</a>
+  <a href="#/animals" data-tab="animals"><span>🐾</span>حیوانات</a>
+  <a href="#/locks" data-tab="locks"><span>🔒</span>قفل‌ها</a>
+  <a href="#/songs" data-tab="songs"><span>🎵</span>آهنگ‌ها</a>
+  <a href="#/videos" data-tab="videos"><span>🎬</span>ویدیوها</a>
+  <a href="#/games" data-tab="games"><span>🎮</span>بازی‌ها</a>
+</nav>
+
+<main id="app" role="main"></main>
+
+<footer class="foot">
+  <span>ساخته‌شده با ❤️ برای کودکان — دنیای رسا ۲.۰</span>
+  <a href="admin.html" class="foot-admin" title="پنل مدیریت">پنل</a>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<div class="modal" id="modal" aria-hidden="true">
+  <div class="modal-back" data-act="modal-close"></div>
+  <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <button class="modal-x" type="button" data-act="modal-close" aria-label="بستن">✕</button>
+    <div id="modal-body"></div>
+  </div>
+</div>
+
+<div id="fpLayer" class="fp-layer" aria-hidden="true"></div>
+<div id="confetti" class="confetti-layer" aria-hidden="true"></div>
+
+<script src="assets/js/data.js?v=2.0.0"></script>
+<script src="assets/js/app.js?v=2.0.0" defer></script>
+<script src="assets/js/games.js?v=2.0.0" defer></script>
+<script>
+  if ('serviceWorker' in navigator) {
+    addEventListener('load', function () {
+      navigator.serviceWorker.register('sw.js').catch(function () {});
+    });
+  }
+</script>
+</body>
+</html>
